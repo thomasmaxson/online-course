@@ -10,7 +10,7 @@ function layout( { children } ) {
 		</div>
 		<div className='sm:ml-64'>
 			<Header />
-			<div className='p-4'>
+			<div>
 				{children}
 			</div>
 		</div>

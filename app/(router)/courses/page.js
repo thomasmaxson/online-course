@@ -1,4 +1,5 @@
 import React from 'react';
+import BannerWelcome from './_components/BannerWelcome';
 
 export const metadata = {
   title: "Courses",
@@ -7,9 +8,9 @@ export const metadata = {
 
 function Courses() {
   return (
-	<div className='grid md:grid-cols-3'>
+	<div className='grid md:grid-cols-3 p-5'>
     <div className='col-span-2'>
-      Banner
+      <BannerWelcome />
     </div>
     <div className=''>
       Sidebar
