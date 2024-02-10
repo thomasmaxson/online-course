@@ -2,8 +2,6 @@ import Image from 'next/image'
 import React from 'react'
 
 function CourseItem( { course } ) {
-	console.log( course )
-
 	return (
 		<div>
 			<Image src={ course?.banner?.url } alt={ course?.name } width={ 500 } height={ 150 } className='rounded-t-xl' />
