@@ -10,8 +10,9 @@ const getAllCourses = async () => {
 				slug
 				name
 				description
+				author
 				banner {
-				  url
+					url
 				}
 				publishedAt
 				updatedAt
@@ -21,14 +22,14 @@ const getAllCourses = async () => {
 				youTubeUrl
 				tags
 				chapters {
-				  ... on Chapter {
-				    id
-				    name
-				    shortDesc
-				    video {
-				      url
-				    }
-				  }
+					... on Chapter {
+						id
+						name
+						shortDesc
+						video {
+							url
+						}
+					}
 				}
 			}
 		}`

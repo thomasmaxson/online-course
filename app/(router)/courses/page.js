@@ -6,8 +6,8 @@ import CourseList from './_components/CourseList';
 
 function Courses() {
   return (
-	<div className='grid md:grid-cols-3 p-5'>
-    <div className='col-span-2'>
+	<div className='grid md:grid-cols-4 p-5'>
+    <div className='col-span-3'>
       <BannerWelcome />
       <CourseList />
     </div>
