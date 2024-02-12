@@ -4,14 +4,14 @@ const MASTER_URL = 'https://api-us-east-1-shared-usea1-02.hygraph.com/v2/' + pro
 
 const getAllCourses = async () => { 
 	const query = gql`
-		query AllCourses {
-			courseLists {
+		query AllCourses { 
+			courseLists { 
 				id
 				slug
 				name
 				description
 				author
-				banner {
+				banner { 
 					url
 				}
 				publishedAt
@@ -21,8 +21,46 @@ const getAllCourses = async () => {
 				sourceCodeURL
 				youTubeUrl
 				tags
-				chapters {
-					... on Chapter {
+				chapters { 
+					... on Chapter { 
+						id
+						name
+						shortDesc
+						video {
+							url
+						}
+					}
+				}
+			}
+		}`
+
+	const result = await request( MASTER_URL, query );
+
+	return result;
+}
+
+
+const getCourseByID = async ( courseID ) => { 
+	const query = gql`
+		query CourseByID { 
+			courseList(where: {slug: "` + courseID + `"}) { 
+				id
+				slug
+				name
+				description
+				author
+				banner { 
+					url
+				}
+				publishedAt
+				updatedAt
+				paidCourse
+				demoUrl
+				sourceCodeURL
+				youTubeUrl
+				tags
+				chapters { 
+					... on Chapter { 
 						id
 						name
 						shortDesc
@@ -40,5 +78,6 @@ const getAllCourses = async () => {
 }
 
 export default { 
-	getAllCourses
+	getAllCourses,
+	getCourseByID
 }

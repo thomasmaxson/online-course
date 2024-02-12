@@ -1,0 +1,14 @@
+import { NextRequest, NextResponse } from "next/server";
+
+export function middleware( request: NextRequest ){ 
+	const requestHeaders = new Headers( request.headers );
+
+	// Set pathname in header, to retrieve from backend in application
+	requestHeaders.set( "x-pathname", request.nextUrl.pathname );
+
+	return NextResponse.next( { 
+		request : { 
+			headers: requestHeaders
+		}
+	} );
+}

@@ -1,4 +1,4 @@
-import GlobalApi from '@/app/_utils/GLobalApi';
+import GlobalApi from '@/app/_utils/GlobalApi';
 import React, { useEffect, useState } from 'react';
 import CourseItem from './CourseItem';
 
@@ -9,6 +9,7 @@ import {
 	SelectTrigger,
 	SelectValue,
 } from "@/components/ui/select";
+import Link from 'next/link';
 
 function CourseList() { 
 
@@ -20,7 +21,6 @@ function CourseList() {
 
 	const getAllCourses = () => { 
 		GlobalApi.getAllCourses().then( response => { 
-			//console.log( courseList );
 			setCourseList( response?.courseLists )
 		} )
 	}
@@ -43,9 +43,9 @@ function CourseList() {
 			<div className='grid grid-cols-2 lg:grid-cols-3 gap-4'>
 				{ courseList.length > 0 ? 
 					courseList.map( ( item, index ) => ( 
-						<div key={ index }>
+						<Link href={'/course-preview/' + item.slug } key={ index } aria-label={ item.name }>
 							<CourseItem course={ item } />
-						</div>
+						</Link>
 					) )
 					:
 					[1, 2, 3, 4, 5, 6, 7 ].map( ( item, index ) => ( 
